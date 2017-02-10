@@ -523,7 +523,7 @@ DIALOG_WEB_BACK_HE="אחורה"
 DIALOG_WEB_ERROR_MSG_HE="זהו שדה חובה."
 DIALOG_WEB_LENGTH_MIN_HE="הסיסמה חייבת להכיל יותר מ{0} תוים!"
 DIALOG_WEB_LENGTH_MAX_HE="הסיסמה חייבת להכיל פחות מ{0} תוים!"
-DIALOG_WEB_DIR_ENG="ltr"
+DIALOG_WEB_DIR_HE="ltr"
 
 #Portuguese 
 DIALOG_WEB_INFO_PT_BR="Por razões de segurança, insira a senha WPA para acessar a internet"
@@ -2692,7 +2692,7 @@ function ConnectionRESET {
                                 NEUTRA
                                 break
 
-			if [ "$fluxass" = "25" ]; then
+			elif [ "$fluxass" = "25" ]; then
 				DIALOG_WEB_ERROR=$DIALOG_WEB_ERROR_VI
 				DIALOG_WEB_INFO=$DIALOG_WEB_INFO_VI
 				DIALOG_WEB_INPUT=$DIALOG_WEB_INPUT_VI
